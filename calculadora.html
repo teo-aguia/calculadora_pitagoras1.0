@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculado de pitagoras</title>
+    <link rel="stylesheet" href="./calculadora.css" />
+    <body>
+      <script src="calculadora.js"></script>
+      <div class="box">
+        <form action="">
+          <fieldset>
+            <legend><b>Calculadora de Piatgoras</b></legend>
+            <br />
+            <div class="inputBox">
+              <input
+                type="number"
+                name="catetoOposto"
+                id="catetoOposto"
+                class="inputUser"
+                required
+              />
+              <label for="nome" class="labelInput">cateto oposto</label>
+            </div>
+            <br /><br />
+            <div class="inputBox">
+              <input
+                type="number"
+                name="catetoAdjacente"
+                id="catetoAdjacente"
+                class="inputUser"
+                required
+              />
+              <label for="nome" class="labelInput">cateto Adjacente</label>
+            </div>
+            <br /><br />
+            <label for="hipotenusa">
+              <input disabled="disabled" name="hipotenusa" id="hipotenusa"
+              />
+              <label for="nome" class="labelInput">Hipotenusa</label>
+            </label>
+            <br /><br />
+            <button onclick="main()">Calcular</button><br />
+          </fieldset>
+        </form>
+      </div>
+    </body>
+</html>

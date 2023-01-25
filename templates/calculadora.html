@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculado de pitagoras</title>
+  <style type="text/css">
+  body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to right, rgb(29, 136, 207), rgb(110, 25, 143));
+  text-align: center;
+  color: #fff;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 80px;
+  border-radius: 15px;
+  color: #fff;
+}
+
+#catetoOposto {
+  background-color: rgb(238, 237, 243);
+  color: rgb(8, 0, 0);
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px black;
+  cursor: pointer;
+}
+
+#catetoAdjacente {
+  background-color: rgb(238, 237, 243);
+  color: rgb(8, 0, 0);
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px black;
+  cursor: pointer;
+}
+
+#hipotenusa {
+  background-color: rgb(238, 237, 243);
+  color: rgb(8, 0, 0);
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px black;
+  cursor: pointer;
+}
+
+button {
+  background-color: slateblue;
+  color: #fff;
+  border: none;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px black;
+  cursor: pointer;
+}
+button:hover {
+  background-color: steelblue;
+}
+.final-step,
+.second-step {
+  display: none;
+}
+input {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+</style>
+        <body>
+      <script src="calculadora.js"></script>
+      <div class="box">
+        <form action="">
+          <fieldset>
+            <legend><b>Calculadora de Piatgoras</b></legend>
+            <br />
+            <div class="inputBox">
+              <input
+                type="number"
+                name="catetoOposto"
+                id="catetoOposto"
+                class="inputUser"
+                required
+              />
+              <label for="nome" class="labelInput">cateto oposto</label>
+            </div>
+            <br /><br />
+            <div class="inputBox">
+              <input
+                type="number"
+                name="catetoAdjacente"
+                id="catetoAdjacente"
+                class="inputUser"
+                required
+              />
+              <label for="nome" class="labelInput">cateto Adjacente</label>
+            </div>
+            <br /><br />
+            <label for="hipotenusa">
+              <input disabled="disabled" name="hipotenusa" id="hipotenusa"
+              />
+              <label for="nome" class="labelInput">Hipotenusa</label>
+            </label>
+            <br /><br />
+            <button onclick="main()">Calcular</button><br />
+          </fieldset>
+        </form>
+      </div>
+    </body>
+<script>
+  const $form = document.querySelector('form')
+const $catetoAdjacente = document.querySelector('#catetoAdjacente')
+const $catetoOposto = document.querySelector('#catetoOposto')
+const $hipotenusa = document.querySelector('#hipotenusa')
+
+function hipotenusa() {
+  const catetoAdjacente = $catetoAdjacente.value
+  const catetoOposto = $catetoOposto.value
+
+  if (!catetoOposto) {
+    createAlert('Insira o valor do cateto oposto')
+  } else if (!catetoAdjacente) {
+    createAlert('Insira o valor do cateto adjacente')
+  } else if (catetoAdjacente <= 0 || catetoOposto <= 0) {
+    createAlert('Entre com valores maiores que 0')
+  } else {
+    $hipotenusa.value = Math.hypot(catetoAdjacente, catetoOposto).toFixed(2)
+  }
+}
+
+function createAlert(msg) {
+  document
+    .querySelector('body')
+    .insertAdjacentHTML('beforebegin', `<div class='alert'>${msg}</div>`)
+
+  setTimeout(function () {
+    deleteAlert()
+  }, 3000)
+}
+
+function deleteAlert() {
+  const list = document.querySelectorAll('.alert')
+  for (const item of list) {
+    item.remove()
+  }
+}
+
+$form.addEventListener('submit', function (event) {
+  event.preventDefault()
+  hipotenusa()
+})
+
+</script>
+</html>
